@@ -8,6 +8,9 @@ if (env.smtpHost) {
     host: env.smtpHost,
     port: env.smtpPort,
     secure: env.smtpPort === 465,
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
     ...(hasAuth ? { auth: { user: env.smtpUser, pass: env.smtpPass } } : {})
   });
 }
@@ -19,5 +22,9 @@ export const sendMail = async ({ to, subject, text, html }) => {
     console.log("[mail disabled] SMTP not configured", { to, subject });
     return;
   }
-  await transporter.sendMail({ from: env.smtpFrom, to, subject, text, html });
+  const mailPromise = transporter.sendMail({ from: env.smtpFrom, to, subject, text, html });
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error("SMTP timeout")), 15000);
+  });
+  await Promise.race([mailPromise, timeoutPromise]);
 };
