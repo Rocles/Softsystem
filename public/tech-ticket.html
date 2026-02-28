@@ -1,0 +1,39 @@
+<!doctype html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tech Ticket - SoftSystem97</title><link rel="stylesheet" href="/css/styles.css" /></head>
+<body>
+<header><a href="/tech" data-i18n="tech.back_dashboard">Back to Dashboard</a></header>
+<main>
+  <div class="card">
+    <h2 id="ticketTitle">Ticket</h2>
+    <p id="ticketMeta"></p>
+    <div class="row">
+      <label><span data-i18n="common.status">Status</span> <select id="statusSel"><option>in_progress</option><option>waiting_client</option><option>resolved</option><option>closed</option></select></label>
+      <button id="statusBtn" data-i18n="ticket.update_status">Update Status</button>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h3 data-i18n="tech.client_chat">Client Chat</h3>
+      <div id="chatBox" class="chat-box"></div>
+      <form id="chatForm" class="grid">
+        <label><span data-i18n="common.message">Message</span> <textarea id="chatMsg" rows="3"></textarea></label>
+        <label><span data-i18n="common.attachment">Attachment</span> <input id="chatFile" type="file" /></label>
+        <div class="row"><button type="submit" data-i18n="ticket.send">Send</button><span id="chatErr" class="error"></span></div>
+      </form>
+    </div>
+    <div class="card">
+      <h3 data-i18n="tech.internal_notes">Internal Notes</h3>
+      <div id="notesBox" class="chat-box"></div>
+      <form id="noteForm" class="grid">
+        <label><span data-i18n="common.note">Note</span> <textarea id="noteMsg" rows="3"></textarea></label>
+        <div class="row"><button type="submit" data-i18n="ticket.add_note">Add Note</button><span id="noteErr" class="error"></span></div>
+      </form>
+    </div>
+  </div>
+</main>
+<script type="module" src="/js/tech-ticket.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body></html>
+

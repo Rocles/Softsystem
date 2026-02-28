@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title.client_tickets">Client Tickets - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+  <nav class="header-nav">
+    <a href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a href="/client/account" data-i18n="nav.account">Account</a>
+    <a href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+</header>
+<main>
+  <nav class="switch-bar">
+    <a class="switch-link" href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a class="switch-link" href="/client/account" data-i18n="nav.account">Account</a>
+    <a class="switch-link active" href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a class="switch-link" href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+
+  <section class="card">
+    <h2 data-i18n="support.title">Open Support Ticket</h2>
+    <form id="ticketForm" class="grid cols-2">
+      <label><span data-i18n="common.full_name">Full Name</span> <input id="fullName" required /></label>
+      <label><span data-i18n="common.email">Email</span> <input id="email" type="email" required /></label>
+      <label><span data-i18n="support.phone_optional">Phone (optional)</span> <input id="phone" /></label>
+      <label><span data-i18n="support.company_optional">Company (optional)</span> <input id="company" /></label>
+      <label><span data-i18n="support.category">Category</span>
+        <select id="category" required>
+          <option value="network" data-i18n="cat.network">network</option>
+          <option value="internet outage" data-i18n="cat.internet_outage">internet outage</option>
+          <option value="app" data-i18n="cat.app">app</option>
+          <option value="hardware" data-i18n="cat.hardware">hardware</option>
+          <option value="other" data-i18n="cat.other">other</option>
+        </select>
+      </label>
+      <label><span data-i18n="support.priority">Priority</span>
+        <select id="priority" required>
+          <option value="low" data-i18n="prio.low">low</option>
+          <option value="medium" selected data-i18n="prio.medium">medium</option>
+          <option value="high" data-i18n="prio.high">high</option>
+        </select>
+      </label>
+      <label style="grid-column:1/-1;"><span data-i18n="support.description">Description</span> <textarea id="description" rows="5" required></textarea></label>
+      <label style="grid-column:1/-1;"><span data-i18n="support.attachment_optional">Attachment (optional)</span> <input id="attachment" type="file" /></label>
+      <div style="grid-column:1/-1;" class="row">
+        <button type="submit" data-i18n="support.create_ticket">Create Ticket</button>
+        <span id="ticketError" class="error"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h3 data-i18n="support.access_existing">Access Existing Ticket</h3>
+    <form id="accessForm" class="grid cols-2">
+      <label><span data-i18n="support.ticket_id">Ticket ID</span> <input id="accessTicketId" required placeholder="SS-2026-12345" /></label>
+      <label><span data-i18n="common.email">Email</span> <input id="accessEmail" type="email" required /></label>
+      <div style="grid-column:1/-1;" class="row">
+        <button type="submit" class="secondary" data-i18n="support.open_existing">Open Ticket</button>
+        <span id="accessError" class="error"></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h3 data-i18n="client.saved_tickets">Saved Tickets</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="admin.col_ticket">Ticket</th>
+            <th data-i18n="admin.col_status">Status</th>
+            <th data-i18n="admin.col_payment">Payment</th>
+            <th data-i18n="common.price">Price</th>
+            <th data-i18n="common.action">Action</th>
+          </tr>
+        </thead>
+        <tbody id="savedRows"></tbody>
+      </table>
+    </div>
+    <p id="portalMsg" class="muted"></p>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong data-i18n="footer.follow">Suivez-nous</strong>
+      <div class="social-links">
+        <a href="https://facebook.com/softsystem97" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://instagram.com/softsystem97" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com/company/softsystem97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/softsystem97" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script type="module" src="/js/client-tickets.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body>
+</html>
+
+
+

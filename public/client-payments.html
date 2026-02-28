@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title.client_payments">Client Payments - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+  <nav class="header-nav">
+    <a href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a href="/client/account" data-i18n="nav.account">Account</a>
+    <a href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+</header>
+<main>
+  <nav class="switch-bar">
+    <a class="switch-link" href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a class="switch-link" href="/client/account" data-i18n="nav.account">Account</a>
+    <a class="switch-link" href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a class="switch-link active" href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+
+  <section class="card">
+    <h2 data-i18n="payments.h2">Payment Requests</h2>
+    <p class="muted" data-i18n="payments.p1">Only tickets waiting for payment appear here.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="admin.col_ticket">Ticket</th>
+            <th data-i18n="admin.col_status">Status</th>
+            <th data-i18n="admin.col_payment">Payment</th>
+            <th data-i18n="common.price">Price</th>
+            <th data-i18n="common.action">Action</th>
+          </tr>
+        </thead>
+        <tbody id="paymentRows"></tbody>
+      </table>
+    </div>
+    <p id="paymentMsg" class="muted"></p>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong data-i18n="footer.follow">Suivez-nous</strong>
+      <div class="social-links">
+        <a href="https://facebook.com/softsystem97" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://instagram.com/softsystem97" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com/company/softsystem97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/softsystem97" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script type="module" src="/js/client-payments.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body>
+</html>
+
+
+

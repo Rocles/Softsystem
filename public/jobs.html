@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title.jobs">Remote Jobs - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+  <nav class="header-nav">
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/#about" data-i18n="nav.about">A propos</a>
+    <a href="/jobs" data-i18n="nav.remote_jobs">Remote Jobs</a>
+    <a href="/company#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="card career-hero">
+    <h2 data-i18n="jobs.h2">Technicien support IT a distance</h2>
+    <p data-i18n="jobs.p1">
+      Rejoignez SoftSystem97 et travaillez sur des incidents reels: reseau, postes utilisateurs,
+      applications et support client structure.
+    </p>
+  </section>
+
+  <section class="card form-shell">
+    <h3 data-i18n="jobs.form_t">Postuler maintenant</h3>
+    <p class="muted" data-i18n="jobs.form_p">Remplissez ce formulaire et joignez votre CV (PDF, DOC, DOCX).</p>
+    <form id="jobForm" class="grid cols-2">
+      <label><span data-i18n="jobs.f_name">Nom complet *</span><input id="fullName" required /></label>
+      <label><span>Email *</span><input id="email" type="email" required /></label>
+      <label><span data-i18n="jobs.f_phone">Telephone</span><input id="phone" /></label>
+      <label><span data-i18n="jobs.f_location">Localisation</span><input id="location" data-i18n-placeholder="jobs.ph_location" placeholder="Ville, pays" /></label>
+      <label><span data-i18n="jobs.f_exp">Annees d'experience</span><input id="yearsExperience" data-i18n-placeholder="jobs.ph_exp" placeholder="3 ans" /></label>
+      <label><span data-i18n="jobs.f_skills">Competences principales</span><input id="skills" data-i18n-placeholder="jobs.ph_skills" placeholder="Reseau, Windows, M365..." /></label>
+      <label style="grid-column:1/-1;">
+        <span data-i18n="jobs.f_msg">Message de presentation</span>
+        <textarea id="message" rows="5" data-i18n-placeholder="jobs.ph_msg" placeholder="Expliquez en quelques lignes votre valeur ajoutee."></textarea>
+      </label>
+      <label style="grid-column:1/-1;">
+        <span data-i18n="jobs.f_cv">Joindre le CV *</span>
+        <input id="cv" type="file" accept=".pdf,.doc,.docx" required />
+      </label>
+      <div style="grid-column:1/-1;" class="row">
+        <button type="submit" data-i18n="jobs.submit">Envoyer ma candidature</button>
+        <span id="jobErr" class="error"></span>
+        <span id="jobOk" class="success"></span>
+      </div>
+    </form>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong data-i18n="footer.follow">Suivez-nous</strong>
+      <div class="social-links">
+        <a href="https://facebook.com/softsystem97" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://instagram.com/softsystem97" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com/company/softsystem97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/softsystem97" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script type="module" src="/js/jobs.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body>
+</html>
+
+
+

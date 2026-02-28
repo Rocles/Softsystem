@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title.client_account">Client Account - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+  <nav class="header-nav">
+    <a href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a href="/client/account" data-i18n="nav.account">Account</a>
+    <a href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+</header>
+<main>
+  <nav class="switch-bar">
+    <a class="switch-link" href="/client" data-i18n="nav.client_space">Client Space</a>
+    <a class="switch-link active" href="/client/account" data-i18n="nav.account">Account</a>
+    <a class="switch-link" href="/client/tickets" data-i18n="nav.tickets">Tickets</a>
+    <a class="switch-link" href="/client/payments" data-i18n="nav.payments">Payments</a>
+  </nav>
+
+  <section class="card">
+    <h2 data-i18n="account.h2">Customer Account</h2>
+    <div id="accountGuest" class="grid cols-2">
+      <form id="accountLoginForm" class="grid">
+        <h4 data-i18n="client.login_title">Login</h4>
+        <label><span data-i18n="common.email">Email</span> <input id="accountLoginEmail" type="email" required /></label>
+        <label><span data-i18n="common.password">Password</span> <input id="accountLoginPassword" type="password" required /></label>
+        <div class="row">
+          <button type="submit" data-i18n="common.login">Login</button>
+          <span id="accountLoginError" class="error"></span>
+        </div>
+      </form>
+      <form id="accountSignupForm" class="grid">
+        <h4 data-i18n="client.create_title">Create Account</h4>
+        <label><span data-i18n="common.full_name">Full Name</span> <input id="accountSignupName" required /></label>
+        <label><span data-i18n="common.email">Email</span> <input id="accountSignupEmail" type="email" required /></label>
+        <label><span data-i18n="common.password">Password</span> <input id="accountSignupPassword" type="password" required /></label>
+        <div class="row">
+          <button type="submit" data-i18n="common.create_account">Create Account</button>
+          <span id="accountSignupError" class="error"></span>
+        </div>
+      </form>
+    </div>
+
+    <div id="accountUser" style="display:none;">
+      <div class="row" style="justify-content:space-between;">
+        <strong id="accountUserName" data-i18n="account.logged_in">Logged in</strong>
+        <button id="accountLogoutBtn" class="secondary" data-i18n="nav.logout">Logout</button>
+      </div>
+      <div class="card" style="margin-top:10px;">
+        <h4 data-i18n="account.quick_actions">Quick actions</h4>
+        <div class="row">
+          <a class="cta-btn" href="/client/tickets" data-i18n="account.open_ticket_now">Open support ticket</a>
+          <a class="cta-btn secondary" href="/client/tickets" data-i18n="account.view_tickets_now">View my tickets</a>
+          <a class="cta-btn secondary" href="/client/payments" data-i18n="account.view_payments_now">View my payments</a>
+        </div>
+      </div>
+      <p class="muted" data-i18n="account.linked_tickets">Tickets linked to your customer account:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="admin.col_ticket">Ticket</th>
+              <th data-i18n="admin.col_status">Status</th>
+              <th data-i18n="admin.col_payment">Payment</th>
+              <th data-i18n="common.price">Price</th>
+              <th data-i18n="common.action">Action</th>
+            </tr>
+          </thead>
+          <tbody id="accountRows"></tbody>
+        </table>
+      </div>
+      <p id="accountMsg" class="muted"></p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong data-i18n="footer.follow">Suivez-nous</strong>
+      <div class="social-links">
+        <a href="https://facebook.com/softsystem97" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://instagram.com/softsystem97" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com/company/softsystem97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/softsystem97" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script type="module" src="/js/client-account.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body>
+</html>
+
+
+

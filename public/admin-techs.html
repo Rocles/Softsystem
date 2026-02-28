@@ -1,0 +1,25 @@
+<!doctype html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Technician Management - SoftSystem97</title><link rel="stylesheet" href="/css/styles.css" /></head>
+<body>
+<header><a href="/admin" data-i18n="nav.admin">Admin Dashboard</a><button id="logoutBtn" class="secondary" data-i18n="nav.logout">Logout</button></header>
+<main>
+  <div class="card">
+    <h2 data-i18n="admin.create_tech">Create Technician</h2>
+    <form id="createForm" class="grid cols-2">
+      <label><span data-i18n="common.full_name">Name</span> <input id="name" required /></label>
+      <label><span data-i18n="common.email">Email</span> <input id="email" type="email" required /></label>
+      <label><span data-i18n="common.password">Password</span> <input id="password" type="password" required /></label>
+      <div class="row"><button type="submit" data-i18n="common.create_account">Create</button><span id="createErr" class="error"></span></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="admin.technicians">Technicians</h2>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th data-i18n="common.full_name">Name</th><th data-i18n="common.email">Email</th><th data-i18n="common.status">Active</th><th data-i18n="common.actions">Actions</th></tr></thead><tbody id="rows"></tbody></table></div>
+  </div>
+</main>
+<script type="module" src="/js/admin-techs.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body></html>
+

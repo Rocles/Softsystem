@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Assessment - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+</header>
+<main>
+  <section class="card">
+    <h2>Technician Skill Assessment</h2>
+    <p class="muted">Complete all questions, then submit your assessment.</p>
+    <form id="assessmentForm" class="grid">
+      <label><span>Full name *</span><input id="candidateName" required /></label>
+      <label><span>Email *</span><input id="candidateEmail" type="email" required /></label>
+      <label><span>Application ID (optional)</span><input id="applicationId" /></label>
+
+      <fieldset class="card"><legend>1. A DNS server that resolves external domains for clients is:</legend>
+        <label><input type="radio" name="q1" value="dns_authoritative" required /> Authoritative-only DNS</label>
+        <label><input type="radio" name="q1" value="dns_recursive" /> Recursive DNS</label>
+        <label><input type="radio" name="q1" value="dhcp_server" /> DHCP server</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>2. Which network topology is best known for fault tolerance and redundancy?</legend>
+        <label><input type="radio" name="q2" value="bus" required /> Bus</label>
+        <label><input type="radio" name="q2" value="star" /> Star</label>
+        <label><input type="radio" name="q2" value="mesh" /> Mesh</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>3. Where do you configure static DNS on a Windows NIC?</legend>
+        <label><input type="radio" name="q3" value="ipconfig" required /> ipconfig</label>
+        <label><input type="radio" name="q3" value="device_manager" /> Device Manager</label>
+        <label><input type="radio" name="q3" value="tcpip_settings" /> TCP/IP settings</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>4. SSH default port is:</legend>
+        <label><input type="radio" name="q4" value="port_80" required /> 80</label>
+        <label><input type="radio" name="q4" value="port_443" /> 443</label>
+        <label><input type="radio" name="q4" value="port_22" /> 22</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>5. If DNS resolution fails on one PC, first quick action is:</legend>
+        <label><input type="radio" name="q5" value="clear_dns_cache" required /> Flush DNS cache</label>
+        <label><input type="radio" name="q5" value="replace_cpu" /> Replace CPU</label>
+        <label><input type="radio" name="q5" value="disable_nic" /> Disable NIC</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>6. A blue screen is most commonly linked to:</legend>
+        <label><input type="radio" name="q6" value="hardware_driver" required /> Hardware/driver issue</label>
+        <label><input type="radio" name="q6" value="screen_brightness" /> Screen brightness</label>
+        <label><input type="radio" name="q6" value="browser_cache" /> Browser cache</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>7. Diskpart convert GPT fails: what is required?</legend>
+        <label><input type="radio" name="q7" value="run_as_admin" required /> Run CMD as Administrator</label>
+        <label><input type="radio" name="q7" value="replace_disk" /> Replace disk</label>
+        <label><input type="radio" name="q7" value="disable_windows" /> Disable Windows Update</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>8. Which Windows tool helps identify app crash error details?</legend>
+        <label><input type="radio" name="q8" value="event_viewer" required /> Event Viewer</label>
+        <label><input type="radio" name="q8" value="paint" /> Paint</label>
+        <label><input type="radio" name="q8" value="calculator" /> Calculator</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>9. USB drive works on desktop but not on laptop hub. Best first workaround:</legend>
+        <label><input type="radio" name="q9" value="use_another_cable" required /> Try another USB cable</label>
+        <label><input type="radio" name="q9" value="replace_motherboard" /> Replace motherboard</label>
+        <label><input type="radio" name="q9" value="format_disk" /> Format disk</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>10. For virtualization workstation performance, priority is:</legend>
+        <label><input type="radio" name="q10" value="max_ram" required /> Maximum RAM</label>
+        <label><input type="radio" name="q10" value="rgb_keyboard" /> RGB keyboard</label>
+        <label><input type="radio" name="q10" value="wallpaper" /> HD wallpaper</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>11. User cannot run \\Server\Share\Runme.bat, internet is fine. First step:</legend>
+        <label><input type="radio" name="q11" value="ping_server" required /> Ping the server</label>
+        <label><input type="radio" name="q11" value="restart_printer" /> Restart printer</label>
+        <label><input type="radio" name="q11" value="disable_firewall_forever" /> Disable firewall forever</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>12. Server replaced with wrong network profile. Correct action:</legend>
+        <label><input type="radio" name="q12" value="fix_subnet_gateway" required /> Correct IP/subnet/gateway to proper subnet</label>
+        <label><input type="radio" name="q12" value="change_hostname_only" /> Change hostname only</label>
+        <label><input type="radio" name="q12" value="remove_dns" /> Remove DNS</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>13. Temporary workaround for users to browse web when internal DNS fails:</legend>
+        <label><input type="radio" name="q13" value="public_dns" required /> Set public DNS on clients</label>
+        <label><input type="radio" name="q13" value="open_port_80" /> Open port 80 on server</label>
+        <label><input type="radio" name="q13" value="replace_switch" /> Replace switch</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>14. Fast way to create many similar VMs:</legend>
+        <label><input type="radio" name="q14" value="templates" required /> Templates</label>
+        <label><input type="radio" name="q14" value="manual_only" /> Build manually one by one</label>
+        <label><input type="radio" name="q14" value="defrag" /> Defragmentation</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>15. Encryption algorithm commonly used to secure online communications:</legend>
+        <label><input type="radio" name="q15" value="md5" required /> MD5</label>
+        <label><input type="radio" name="q15" value="rsa" /> RSA</label>
+        <label><input type="radio" name="q15" value="des" /> DES</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>16. On Microsoft 365 tenant creation, first user role is:</legend>
+        <label><input type="radio" name="q16" value="global_admin" required /> Global Administrator</label>
+        <label><input type="radio" name="q16" value="webmaster" /> Webmaster</label>
+        <label><input type="radio" name="q16" value="service_desk" /> Service admin</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>17. Two tools for org storage/collaboration (internal + external):</legend>
+        <label><input type="radio" name="q17" value="sharepoint_onedrive" required /> SharePoint + OneDrive</label>
+        <label><input type="radio" name="q17" value="excel_word" /> Excel + Word</label>
+        <label><input type="radio" name="q17" value="teams_paint" /> Teams + Paint</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>18. Multiple users need one shared mailbox to send/receive:</legend>
+        <label><input type="radio" name="q18" value="shared_mailbox" required /> Create shared mailbox with members/permissions</label>
+        <label><input type="radio" name="q18" value="single_password" /> Share one user mailbox password</label>
+        <label><input type="radio" name="q18" value="public_folder_only" /> Public folder only</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>19. Outlook tool for automated handling of incoming emails:</legend>
+        <label><input type="radio" name="q19" value="rules" required /> Rules</label>
+        <label><input type="radio" name="q19" value="macros" /> Macros</label>
+        <label><input type="radio" name="q19" value="flags" /> Flags</label>
+      </fieldset>
+
+      <fieldset class="card"><legend>20. To require one-time code at sign-in, configure:</legend>
+        <label><input type="radio" name="q20" value="mfa" required /> Multi-factor authentication</label>
+        <label><input type="radio" name="q20" value="basic_password" /> Basic password only</label>
+        <label><input type="radio" name="q20" value="guest_mode" /> Guest mode</label>
+      </fieldset>
+
+      <div class="row">
+        <button type="submit">Submit assessment</button>
+        <span id="assessErr" class="error"></span>
+        <span id="assessOk" class="success"></span>
+      </div>
+    </form>
+  </section>
+</main>
+<script type="module" src="/js/assessment.js"></script>
+</body>
+</html>
+

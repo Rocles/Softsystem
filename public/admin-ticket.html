@@ -1,0 +1,56 @@
+<!doctype html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Ticket - SoftSystem97</title><link rel="stylesheet" href="/css/styles.css" /></head>
+<body>
+<header><a href="/admin" data-i18n="admin.back_tickets">Back to Tickets</a></header>
+<main>
+  <div class="card">
+    <h2 id="ticketTitle">Ticket</h2>
+    <p id="ticketMeta"></p>
+    <div id="ticketDetails" class="grid cols-2"></div>
+    <div class="row">
+      <button id="takeChargeBtn" class="secondary" data-i18n="ticket.take_charge">Take Charge</button>
+      <label><span data-i18n="common.status">Status</span> <select id="statusSel"><option>new</option><option>in_progress</option><option>waiting_client</option><option>resolved</option><option>closed</option></select></label>
+      <button id="statusBtn" data-i18n="ticket.update_status">Update Status</button>
+    </div>
+    <div class="row">
+      <label><span data-i18n="ticket.price_usd">Price (USD)</span> <input id="priceInput" type="text" inputmode="decimal" placeholder="ex: 1000.50 or 1,000.50" /></label>
+      <button id="setPriceBtn" data-i18n="ticket.set_price_send">Set Price & Send Payment Request</button>
+      <span id="priceMsg" class="muted"></span>
+      <span id="priceErr" class="error"></span>
+    </div>
+    <div class="row">
+      <label><span data-i18n="ticket.assign_tech">Assign Tech</span> <select id="techSel"></select></label>
+      <button id="assignBtn" data-i18n="ticket.assign">Assign</button>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <div class="card">
+      <h3 data-i18n="ticket.client_chat">Client Chat</h3>
+      <div id="chatBox" class="chat-box"></div>
+      <form id="chatForm" class="grid">
+        <label><span data-i18n="common.message">Message</span> <textarea id="chatMsg" rows="3"></textarea></label>
+        <label><span data-i18n="common.attachment">Attachment</span> <input id="chatFile" type="file" /></label>
+        <div class="row"><button type="submit" data-i18n="ticket.send">Send</button><span id="chatErr" class="error"></span></div>
+      </form>
+    </div>
+    <div class="card">
+      <h3 data-i18n="ticket.internal_notes">Internal Notes</h3>
+      <div id="notesBox" class="chat-box"></div>
+      <form id="noteForm" class="grid">
+        <label><span data-i18n="common.note">Note</span> <textarea id="noteMsg" rows="3"></textarea></label>
+        <div class="row"><button type="submit" data-i18n="ticket.add_note">Add Note</button><span id="noteErr" class="error"></span></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 data-i18n="ticket.history">History</h3>
+    <div id="logsBox" class="chat-box"></div>
+  </div>
+</main>
+<script type="module" src="/js/admin-ticket.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body></html>
+

@@ -1,0 +1,22 @@
+<!doctype html>
+<html><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard - SoftSystem97</title><link rel="stylesheet" href="/css/styles.css" /></head>
+<body>
+<header><a href="/" data-i18n="nav.softsystem">SoftSystem97</a><a href="/admin/techs" data-i18n="admin.technicians">Technicians</a><button id="logoutBtn" class="secondary" data-i18n="nav.logout">Logout</button></header>
+<main>
+  <div class="card">
+    <h2 data-i18n="admin.dashboard_title">Tickets</h2>
+    <div class="row">
+      <select id="statusFilter"><option value="">All status</option><option>new</option><option>in_progress</option><option>waiting_client</option><option>resolved</option><option>closed</option></select>
+      <select id="techFilter"><option value="">All technicians</option></select>
+      <input id="search" data-i18n-placeholder="admin.search_ph" placeholder="Search ticket or email" />
+      <button id="refreshBtn" class="secondary" data-i18n="admin.refresh">Refresh</button>
+    </div>
+    <div class="table-wrap"><table><thead><tr><th data-i18n="admin.col_ticket">Ticket</th><th data-i18n="admin.col_client">Client</th><th data-i18n="admin.col_company">Company</th><th data-i18n="admin.col_email">Email</th><th data-i18n="admin.col_description">Description</th><th data-i18n="admin.col_status">Status</th><th data-i18n="admin.col_payment">Payment</th><th data-i18n="admin.col_tech">Tech</th><th data-i18n="admin.col_actions">Actions</th></tr></thead><tbody id="ticketRows"></tbody></table></div>
+  </div>
+</main>
+<script type="module" src="/js/admin.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body></html>
+
+

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="title.company">Company Services - SoftSystem97</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+<header class="header-main">
+  <a href="/" class="header-brand-right brand-link"><img class="brand-mark" src="/assets/logo-softsystem97.png" alt="SoftSystem97 logo" /><span>SoftSystem97</span></a>
+  <nav class="header-nav">
+    <a href="/" data-i18n="nav.home">Home</a>
+    <a href="/#about" data-i18n="nav.about">A propos</a>
+    <a href="/jobs" data-i18n="nav.remote_jobs">Remote Jobs</a>
+    <a href="/company#contact" data-i18n="nav.contact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="card company-block">
+    <h2 data-i18n="company.h2">Un partenaire IT fiable pour votre entreprise</h2>
+    <p class="muted" data-i18n="company.p1">
+      SoftSystem97 aide les entreprises a structurer leur support IT, recruter les bons profils et garantir une execution technique de qualite.
+      Notre approche combine reactivite, transparence et responsabilite sur chaque intervention.
+    </p>
+    <div class="grid cols-2">
+      <article class="plan">
+        <h4 data-i18n="company.plan1_t">Ce que nous faisons</h4>
+        <ul>
+          <li data-i18n="company.plan1_i1">Recrutement de techniciens support IT</li>
+          <li data-i18n="company.plan1_i2">Prise en charge des incidents et depannage</li>
+          <li data-i18n="company.plan1_i3">Communication client via ticketing</li>
+          <li data-i18n="company.plan1_i4">Escalade structuree et controle qualite</li>
+        </ul>
+      </article>
+      <article class="plan">
+        <h4 data-i18n="company.plan2_t">Pourquoi les entreprises nous choisissent</h4>
+        <ul>
+          <li data-i18n="company.plan2_i1">Onboarding rapide et process clair</li>
+          <li data-i18n="company.plan2_i2">Techniciens dedies et suivi rigoureux</li>
+          <li data-i18n="company.plan2_i3">Paiement securise et historique documente</li>
+          <li data-i18n="company.plan2_i4">Modele evolutif pour collaboration long terme</li>
+        </ul>
+      </article>
+    </div>
+    <div class="row" style="margin-top:10px;">
+      <a id="openBecomeClientBtn" class="landing-main-btn secondary" href="#become-client" data-i18n="company.open_btn">Cliquez ici pour devenir client</a>
+    </div>
+  </section>
+
+  <section class="card form-shell" id="contact">
+    <div id="becomeClientPanel" class="hidden-panel">
+      <h3 id="become-client" data-i18n="company.form_t">Devenir client</h3>
+      <form id="companyForm" class="grid cols-2 become-client-form">
+        <label><span data-i18n="company.f_first">Prenom *</span><input id="firstName" required /></label>
+        <label><span data-i18n="company.f_last">Nom *</span><input id="lastName" required /></label>
+        <label><span data-i18n="company.f_company">Nom de l'entreprise *</span><input id="companyName" required /></label>
+        <label><span data-i18n="company.f_position">Votre fonction *</span><input id="positionTitle" required /></label>
+        <label><span data-i18n="company.f_website">Site web *</span><input id="website" required data-i18n-placeholder="company.ph_website" placeholder="www.entreprise.com" /></label>
+        <label><span data-i18n="company.f_phone">Telephone</span><input id="phone" /></label>
+        <label style="grid-column:1/-1;"><span data-i18n="company.f_email">Email professionnel *</span><input id="workEmail" type="email" required data-i18n-placeholder="company.ph_email" placeholder="contact@entreprise.com" /></label>
+        <label style="grid-column:1/-1;">
+          <span data-i18n="company.f_needs">Description de vos besoins *</span>
+          <textarea id="needs" rows="5" required></textarea>
+        </label>
+        <label style="grid-column:1/-1;">
+          <span data-i18n="company.f_hear">Comment avez-vous entendu parler de nous ? *</span>
+          <input id="hearAbout" required data-i18n-placeholder="company.ph_hear" placeholder="Google, recommandation, reseaux sociaux..." />
+        </label>
+        <div style="grid-column:1/-1;" class="row">
+          <button type="submit" data-i18n="company.f_submit">Envoyer la demande</button>
+          <span id="companyErr" class="error"></span>
+          <span id="companyOk" class="success"></span>
+        </div>
+      </form>
+    </div>
+
+    <h3 style="margin-top:24px;" data-i18n="company.contact_t">Contact rapide</h3>
+    <div class="contact-channels">
+      <article class="contact-channel">
+        <h4 data-i18n="company.c1_t">Email support</h4>
+        <p>support@softsystem97.com</p>
+        <a class="cta-btn" href="mailto:support@softsystem97.com" data-i18n="company.c1_btn">Envoyer un email</a>
+      </article>
+      <article class="contact-channel">
+        <h4 data-i18n="company.c2_t">Telephone</h4>
+        <p>+1 (555) 010-2026</p>
+        <a class="cta-btn" href="tel:+15550102026" data-i18n="company.c2_btn">Appeler maintenant</a>
+      </article>
+      <article class="contact-channel">
+        <h4>WhatsApp Business</h4>
+        <p data-i18n="company.c3_p">Echange rapide pour pre-qualification de votre besoin</p>
+        <a class="cta-btn" href="https://wa.me/15550102026" target="_blank" rel="noreferrer" data-i18n="company.c3_btn">Ecrire sur WhatsApp</a>
+      </article>
+      <article class="contact-channel">
+        <h4 data-i18n="company.c4_t">Horaires de service</h4>
+        <p>Lundi - Samedi, 8:00 AM - 7:00 PM</p>
+        <a class="cta-btn" href="/client/tickets" data-i18n="company.c4_btn">Ouvrir un ticket</a>
+      </article>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong data-i18n="footer.follow">Suivez-nous</strong>
+      <div class="social-links">
+        <a href="https://facebook.com/softsystem97" target="_blank" rel="noreferrer">Facebook</a>
+        <a href="https://instagram.com/softsystem97" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://linkedin.com/company/softsystem97" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://x.com/softsystem97" target="_blank" rel="noreferrer">X</a>
+      </div>
+    </div>
+  </footer>
+</main>
+<script type="module" src="/js/company.js"></script>
+<script type="module" src="/js/i18n-init.js"></script>
+</body>
+</html>
+
+
+
