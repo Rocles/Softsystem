@@ -432,9 +432,23 @@ export const submitJobApplication = async (req, res, next) => {
       cvPath
     });
 
+    // Build a robust public base URL for links in emails.
+    const forwardedProto = String(req.headers["x-forwarded-proto"] || req.protocol || "https");
+    const host = String(req.get("host") || "");
+    const requestBaseUrl = host ? `${forwardedProto}://${host}` : "";
+    const baseForLinks = env.appBaseUrl && !env.appBaseUrl.includes("localhost")
+      ? env.appBaseUrl
+      : (requestBaseUrl || env.appBaseUrl);
+
+    // 1) Internal notification should be reliable and independent.
     try {
+      const internalRecipients = [env.recruitmentInboxEmail, env.supportInboxEmail]
+        .filter(Boolean)
+        .filter((v, i, arr) => arr.indexOf(v) === i)
+        .join(",");
+
       await sendMail({
-        to: env.recruitmentInboxEmail,
+        to: internalRecipients,
         subject: `New Job Application - ${fullName}`,
         text: [
           `A new candidate has applied.`,
@@ -446,7 +460,7 @@ export const submitJobApplication = async (req, res, next) => {
           `Experience: ${yearsExperience || "-"}`,
           `Skills: ${skills || "-"}`,
           `Message: ${message || "-"}`,
-          `CV: ${env.appBaseUrl}/${cvPath}`
+          `CV: ${baseForLinks}/${cvPath}`
         ].join("\n"),
         html: `
           <p><strong>A new candidate has applied.</strong></p>
@@ -458,39 +472,46 @@ export const submitJobApplication = async (req, res, next) => {
           <p><strong>Experience:</strong> ${yearsExperience || "-"}</p>
           <p><strong>Skills:</strong> ${skills || "-"}</p>
           <p><strong>Message:</strong><br/>${message || "-"}</p>
-          <p><strong>CV:</strong> <a href="${env.appBaseUrl}/${cvPath}" target="_blank">Open CV</a></p>
+          <p><strong>CV:</strong> <a href="${baseForLinks}/${cvPath}" target="_blank">Open CV</a></p>
         `
       });
-
-      {
-        const assessmentBase = `${env.appBaseUrl}/assessment`;
-        const sep = assessmentBase.includes("?") ? "&" : "?";
-        const assessmentLink = `${assessmentBase}${sep}applicationId=${encodeURIComponent(String(application.id))}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fullName)}`;
-        await sendMail({
-          to: email,
-          subject: "SoftSystem97 - Invitation a l'evaluation",
-          text: [
-            `Bonjour ${fullName},`,
-            "",
-            "Merci pour votre candidature.",
-            "Veuillez completer l'evaluation technique en utilisant le lien securise ci-dessous :",
-            assessmentLink,
-            "",
-            "Cordialement,",
-            "Equipe de recrutement de SoftSystem97"
-          ].join("\n"),
-          html: `
-            <p>Bonjour <strong>${fullName}</strong>,</p>
-            <p>Merci pour votre candidature.</p>
-            <p>Veuillez completer l'evaluation technique en utilisant le lien securise ci-dessous :</p>
-            <p><a href="${assessmentLink}" target="_blank">Evaluation initiale</a></p>
-            <p>Cordialement,<br/>Equipe de recrutement de SoftSystem97</p>
-          `
-        });
-      }
     } catch (mailError) {
-      console.error("[mail error] Job application saved but email notification/invite failed", {
+      console.error("[mail error] Job application saved but internal notification failed", {
         applicationId: application.id,
+        error: mailError.message
+      });
+    }
+
+    // 2) Candidate invite is independent; failure here should not block internal alerts.
+    try {
+      const assessmentBase = `${baseForLinks}/assessment`;
+      const sep = assessmentBase.includes("?") ? "&" : "?";
+      const assessmentLink = `${assessmentBase}${sep}applicationId=${encodeURIComponent(String(application.id))}&email=${encodeURIComponent(email)}&name=${encodeURIComponent(fullName)}`;
+      await sendMail({
+        to: email,
+        subject: "SoftSystem97 - Invitation a l'evaluation",
+        text: [
+          `Bonjour ${fullName},`,
+          "",
+          "Merci pour votre candidature.",
+          "Veuillez completer l'evaluation technique en utilisant le lien securise ci-dessous :",
+          assessmentLink,
+          "",
+          "Cordialement,",
+          "Equipe de recrutement de SoftSystem97"
+        ].join("\n"),
+        html: `
+          <p>Bonjour <strong>${fullName}</strong>,</p>
+          <p>Merci pour votre candidature.</p>
+          <p>Veuillez completer l'evaluation technique en utilisant le lien securise ci-dessous :</p>
+          <p><a href="${assessmentLink}" target="_blank">Evaluation initiale</a></p>
+          <p>Cordialement,<br/>Equipe de recrutement de SoftSystem97</p>
+        `
+      });
+    } catch (mailError) {
+      console.error("[mail error] Job application saved but candidate invite failed", {
+        applicationId: application.id,
+        candidateEmail: email,
         error: mailError.message
       });
     }
