@@ -13,7 +13,7 @@ import { clean, generateToken, validateEmail } from "../services/utils.js";
 
 const allowedCategories = ["network", "internet outage", "app", "hardware", "other"];
 const allowedPriorities = ["low", "medium", "high"];
-const allowedCvExtensions = [".pdf", ".doc", ".docx"];
+const allowedCvExtensions = [".pdf", ".doc", ".docx", ".jpg", ".jpeg", ".png"];
 const assessmentAnswerKey = {
   q1: "dns_recursive",
   q2: "mesh",
@@ -416,7 +416,7 @@ export const submitJobApplication = async (req, res, next) => {
 
     const ext = path.extname(req.file.originalname || "").toLowerCase();
     if (!allowedCvExtensions.includes(ext)) {
-      return res.status(400).json({ message: "CV must be PDF, DOC or DOCX" });
+      return res.status(400).json({ message: "CV must be PDF, DOC, DOCX, JPG or PNG" });
     }
 
     const cvPath = `${path.basename(env.uploadDir)}/${req.file.filename}`.replace(/\\/g, "/");

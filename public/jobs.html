@@ -27,7 +27,7 @@
 
   <section class="card form-shell">
     <h3 data-i18n="jobs.form_t">Postuler maintenant</h3>
-    <p class="muted" data-i18n="jobs.form_p">Remplissez ce formulaire et joignez votre CV (PDF, DOC, DOCX).</p>
+    <p class="muted" data-i18n="jobs.form_p">Remplissez ce formulaire et joignez votre CV (PDF, DOC, DOCX, JPG, PNG).</p>
     <form id="jobForm" class="grid cols-2">
       <label><span data-i18n="jobs.f_name">Nom complet *</span><input id="fullName" required /></label>
       <label><span>Email *</span><input id="email" type="email" required /></label>
@@ -41,7 +41,7 @@
       </label>
       <label style="grid-column:1/-1;">
         <span data-i18n="jobs.f_cv">Joindre le CV *</span>
-        <input id="cv" type="file" accept=".pdf,.doc,.docx" required />
+        <input id="cv" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required />
       </label>
       <div style="grid-column:1/-1;" class="row">
         <button type="submit" data-i18n="jobs.submit">Envoyer ma candidature</button>
