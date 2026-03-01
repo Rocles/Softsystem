@@ -13,8 +13,12 @@
 <main>
   <section class="card">
     <h2>Technician Skill Assessment</h2>
-    <p class="muted">Complete all questions, then submit your assessment.</p>
-    <form id="assessmentForm" class="grid">
+    <p class="muted">Complete all questions within <strong>20 minutes</strong>, then submit your assessment.</p>
+    <div class="row" style="justify-content:space-between;align-items:center;margin:10px 0 14px;">
+      <span class="muted">Time remaining</span>
+      <strong id="timerBadge" style="font-size:1.1rem;color:#0b5fa8;">20:00</strong>
+    </div>
+    <form id="assessmentForm" class="grid" novalidate>
       <label><span>Full name *</span><input id="candidateName" required /></label>
       <label><span>Email *</span><input id="candidateEmail" type="email" required /></label>
       <label><span>Application ID (optional)</span><input id="applicationId" /></label>
@@ -140,14 +144,14 @@
       </fieldset>
 
       <div class="row">
-        <button type="submit">Submit assessment</button>
+        <button id="submitAssessmentBtn" type="submit">Submit assessment</button>
         <span id="assessErr" class="error"></span>
         <span id="assessOk" class="success"></span>
       </div>
     </form>
+    <div id="assessResult" class="card" style="display:none;margin-top:16px;"></div>
   </section>
 </main>
 <script type="module" src="/js/assessment.js"></script>
 </body>
 </html>
-

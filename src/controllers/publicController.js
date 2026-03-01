@@ -594,6 +594,8 @@ export const submitAssessmentResult = async (req, res, next) => {
     const candidateEmail = clean(req.body.candidateEmail, 190).toLowerCase();
     const applicationId = clean(req.body.applicationId, 40);
     const answers = req.body.answers && typeof req.body.answers === "object" ? req.body.answers : {};
+    const elapsedSeconds = Number(req.body.elapsedSeconds || 0);
+    const timedOut = Boolean(req.body.timedOut);
 
     if (!candidateName || !validateEmail(candidateEmail)) {
       return res.status(400).json({ message: "Valid candidateName and candidateEmail are required" });
@@ -605,6 +607,9 @@ export const submitAssessmentResult = async (req, res, next) => {
       if (String(answers[key] || "") === assessmentAnswerKey[key]) score += 1;
     }
     const total = keys.length;
+    const passScore = 14;
+    const percentage = Math.round((score / total) * 100);
+    const passed = score >= passScore;
 
     try {
       await sendMail({
@@ -616,26 +621,53 @@ export const submitAssessmentResult = async (req, res, next) => {
           `Email: ${candidateEmail}`,
           `Application ID: ${applicationId || "-"}`,
           `Score: ${score}/${total}`,
+          `Result: ${passed ? "PASSED" : "NOT PASSED"} (${percentage}%)`,
+          `Elapsed: ${elapsedSeconds || "-"} seconds`,
+          `Timed out: ${timedOut ? "yes" : "no"}`,
           ``,
           `Answers:`,
           ...keys.map((k) => `${k}: ${String(answers[k] || "-")}`)
         ].join("\n")
       });
 
-      await sendMail({
-        to: candidateEmail,
-        subject: "SoftSystem97 - Assessment received",
-        text: [
-          `Hello ${candidateName},`,
-          ``,
-          `We confirm that we received your assessment.`,
-          `Result recorded: ${score}/${total}.`,
-          ``,
-          `Our team will review your profile and contact you with next steps.`,
-          ``,
-          `SoftSystem97 Recruitment Team`
-        ].join("\n")
-      });
+      if (passed) {
+        await sendMail({
+          to: candidateEmail,
+          subject: "SoftSystem97 - Assessment result: PASSED",
+          text: [
+            `Hello ${candidateName},`,
+            ``,
+            `Thank you for completing the technical assessment.`,
+            `Your result: ${score}/${total} (${percentage}%) - PASSED.`,
+            ``,
+            `Next step: please send a 2-3 minute video introduction in English to ${env.recruitmentInboxEmail}.`,
+            `In your video, please:`,
+            `1) Present yourself and your IT support background.`,
+            `2) Explain one real troubleshooting case you handled.`,
+            `3) Share why you are a strong fit for SoftSystem97.`,
+            ``,
+            `You can send a Google Drive or unlisted YouTube link.`,
+            ``,
+            `SoftSystem97 Recruitment Team`
+          ].join("\n")
+        });
+      } else {
+        await sendMail({
+          to: candidateEmail,
+          subject: "SoftSystem97 - Assessment result",
+          text: [
+            `Hello ${candidateName},`,
+            ``,
+            `Thank you for completing the technical assessment.`,
+            `Your result: ${score}/${total} (${percentage}%).`,
+            ``,
+            `At this stage, your profile is not selected for the next step.`,
+            `We encourage you to keep improving and apply again in the future.`,
+            ``,
+            `SoftSystem97 Recruitment Team`
+          ].join("\n")
+        });
+      }
     } catch (mailError) {
       console.error("[mail error] Assessment submitted but notification failed", {
         candidateEmail,
@@ -643,7 +675,17 @@ export const submitAssessmentResult = async (req, res, next) => {
       });
     }
 
-    res.json({ message: "Assessment submitted", score, total });
+    res.json({
+      message: "Assessment submitted",
+      score,
+      total,
+      passScore,
+      percentage,
+      passed,
+      elapsedSeconds,
+      timedOut,
+      recruitmentEmail: env.recruitmentInboxEmail
+    });
   } catch (error) {
     next(error);
   }
