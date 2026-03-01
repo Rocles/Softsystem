@@ -17,6 +17,7 @@ export const env = {
   supportInboxEmail: process.env.SUPPORT_INBOX_EMAIL || "cybermoses45@gmail.com",
   recruitmentInboxEmail: process.env.RECRUITMENT_INBOX_EMAIL || "contact@softsystem97.com",
   assessmentUrl: process.env.ASSESSMENT_URL || "",
+  videoPresentationUrl: process.env.VIDEO_PRESENTATION_URL || "https://www.loom.com/record",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY || "",
   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET || "",
   mockPayments: String(process.env.MOCK_PAYMENTS || "true").toLowerCase() === "true"

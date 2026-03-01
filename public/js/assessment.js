@@ -51,14 +51,15 @@ const renderResult = (data) => {
   const statusColor = data.passed ? "#0f7a35" : "#b42318";
   const nextStep = data.passed
     ? `
-      <h4 style="margin:12px 0 6px;">Next step: Video introduction in English</h4>
-      <p style="margin:0 0 8px;">Please send a 2-3 minute video introduction to <strong>${data.recruitmentEmail}</strong>.</p>
+      <h4 style="margin:12px 0 6px;color:#0f7a35;">Congratulations! You passed the first stage.</h4>
+      <p style="margin:0 0 8px;">Please record a <strong>5-minute</strong> video introduction in English, then send your video link to <strong>${data.recruitmentEmail}</strong>.</p>
       <ul style="margin:0 0 8px 18px;">
         <li>Present yourself and your IT support background.</li>
         <li>Explain one real troubleshooting case you handled.</li>
-        <li>Tell us why you are a strong fit for SoftSystem97.</li>
+        <li>Talk about your experience without mentioning company names.</li>
       </ul>
-      <p style="margin:0;">You can share a Google Drive or unlisted YouTube link by email.</p>
+      <p style="margin:0 0 8px;">You can share a Google Drive or unlisted YouTube link by email.</p>
+      <p style="margin:0;"><a href="${data.videoPresentationUrl}" target="_blank" rel="noreferrer">Click here to record your video</a></p>
     `
     : `<p style="margin:10px 0 0;">Thank you for your effort. We encourage you to continue practicing and apply again.</p>`;
 
