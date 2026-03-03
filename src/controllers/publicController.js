@@ -606,6 +606,7 @@ export const submitAssessmentResult = async (req, res, next) => {
     for (const key of keys) {
       if (String(answers[key] || "") === assessmentAnswerKey[key]) score += 1;
     }
+
     const total = keys.length;
     const passScore = 14;
     const percentage = Math.round((score / total) * 100);
@@ -617,7 +618,7 @@ export const submitAssessmentResult = async (req, res, next) => {
         to: env.recruitmentInboxEmail,
         subject: `Assessment Completed - ${candidateName}`,
         text: [
-          `A candidate completed the assessment.`,
+          "A candidate completed the assessment.",
           `Candidate: ${candidateName}`,
           `Email: ${candidateEmail}`,
           `Application ID: ${applicationId || "-"}`,
@@ -625,63 +626,58 @@ export const submitAssessmentResult = async (req, res, next) => {
           `Result: ${passed ? "PASSED" : "NOT PASSED"} (${percentage}%)`,
           `Elapsed: ${elapsedSeconds || "-"} seconds`,
           `Timed out: ${timedOut ? "yes" : "no"}`,
-          ``,
-          `Answers:`,
+          "",
+          "Answers:",
           ...keys.map((k) => `${k}: ${String(answers[k] || "-")}`)
         ].join("\n")
       });
 
-        if (passed) {
-          await sendMail({
-            to: candidateEmail,
-            subject: "SoftSystem97 - Assessment result: PASSED",
-            text: [
-              `Hi ${candidateName},`,
-              ``,
-              `You have passed our Technician Skill Assessment and are now one step away from getting into our program!`,
-              ``,
-              ``,
-              `In the next step, we will ask you to record an introduction video of yourself along with answers to two relatively simple technical questions.`,
-              ``,
-              ``,
-              `We're looking for a presentation of your communication skills and ability to explain technical concepts in simple terms. Once you pass the program, we will show these videos to our clients, so please try to record the best video you can. You will have the opportunity to re-record as many times as you like before submitting the final version.`,
-              ``,
-              ``,
-              `You can find the video recording page with more instructions here:`,
-              `${videoPresentationUrl}`,
-              ``,
-              ``,
-              `Please read the instructions carefully and record your answers at your earliest convenience so that you can continue your adventure as soon as possible.`,
-              ``,
-              `You have 10 days to submit your videos before your application will be discarded.`,
-              ``,
-              `We will contact you after you have submitted your videos and you can always view your application status here:`,
-              `${env.appBaseUrl}/jobs`,
-              ``,
-              `Please Note: By entering and completing our Training and Testing Program, it does not guarantee an opportunity with a client. Placement decisions are ultimately based on client preferences, your skills and experience, and how well they align with the needs of our clients. While some candidates secure an opportunity within a month, the process may take longer depending on various factors.`,
-              ``,
-              ``,
-              `We’d like to highlight that the majority of our client requests are for technicians available during US business hours. Being available for US business hours, could greatly increase your chances for a potential interview and/or position with a client.`,
-              ``,
-              `Thanks,`,
-              ``,
-              `The Support Adventure Team`
-            ].join("\n")
-          });
-        } else {
+      if (passed) {
+        await sendMail({
+          to: candidateEmail,
+          subject: "SoftSystem97 - Assessment result: PASSED",
+          text: [
+            `Hi ${candidateName},`,
+            "",
+            "You have passed our Technician Skill Assessment and are now one step away from getting into our program!",
+            "",
+            "In the next step, we will ask you to record an introduction video of yourself along with answers to two relatively simple technical questions.",
+            "",
+            "We're looking for a presentation of your communication skills and ability to explain technical concepts in simple terms. Once you pass the program, we will show these videos to our clients, so please try to record the best video you can. You will have the opportunity to re-record as many times as you like before submitting the final version.",
+            "",
+            "You can find the video recording page with more instructions here:",
+            `${videoPresentationUrl}`,
+            "",
+            "Please read the instructions carefully and record your answers at your earliest convenience so that you can continue your adventure as soon as possible.",
+            "",
+            "You have 10 days to submit your videos before your application will be discarded.",
+            "",
+            "We will contact you after you have submitted your videos and you can always view your application status here:",
+            `${env.appBaseUrl}/jobs`,
+            "",
+            "Please Note: By entering and completing our Training and Testing Program, it does not guarantee an opportunity with a client. Placement decisions are ultimately based on client preferences, your skills and experience, and how well they align with the needs of our clients. While some candidates secure an opportunity within a month, the process may take longer depending on various factors.",
+            "",
+            "We'd like to highlight that the majority of our client requests are for technicians available during US business hours. Being available for US business hours could greatly increase your chances for a potential interview and/or position with a client.",
+            "",
+            "Thanks,",
+            "",
+            "The Support Adventure Team"
+          ].join("\n")
+        });
+      } else {
         await sendMail({
           to: candidateEmail,
           subject: "SoftSystem97 - Assessment result",
           text: [
             `Hello ${candidateName},`,
-            ``,
-            `Thank you for completing the technical assessment.`,
+            "",
+            "Thank you for completing the technical assessment.",
             `Your result: ${score}/${total} (${percentage}%).`,
-            ``,
-            `At this stage, your profile is not selected for the next step.`,
-            `We encourage you to keep improving and apply again in the future.`,
-            ``,
-            `SoftSystem97 Recruitment Team`
+            "",
+            "At this stage, your profile is not selected for the next step.",
+            "We encourage you to keep improving and apply again in the future.",
+            "",
+            "SoftSystem97 Recruitment Team"
           ].join("\n")
         });
       }
@@ -708,4 +704,3 @@ export const submitAssessmentResult = async (req, res, next) => {
     next(error);
   }
 };
-
